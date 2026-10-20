@@ -13,12 +13,11 @@ def create_app():
     app.config.from_object(Config)
 
     # Enable CORS for specified origins and methods
-    CORS(app, resources={r"/*": {"origins": ["http://127.0.0.1:5000", "http://localhost:3000"],
+    CORS(app, resources={r"/*": {"origins": ["http://127.0.0.1:5000", "http://localhost:3000", "http://localhost:5173"],
                                   "methods": ["GET", "POST", "DELETE", "OPTIONS"],
                                   "supports_credentials": True}})
 
-    # Set secret key and session cookie configurations
-    app.config['SECRET_KEY'] = "3d1139f9a28f5d4b2b57e8ca2fd70d9e"
+    # Session cookie configurations (SECRET_KEY comes from Config / the environment)
     app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=1)
     app.config['SESSION_COOKIE_SAMESITE'] = "None"  # Necessary for cross-site cookie sharing
     app.config['SESSION_COOKIE_SECURE'] = False  # Set to True in production

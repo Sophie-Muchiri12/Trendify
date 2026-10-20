@@ -35,3 +35,27 @@ shipping.
 
 5. Reviews and Ratings: Users can provide feedback on
 purchases, helping other shoppers make informed decisions.
+
+## Running locally
+
+**Backend** (Flask, http://127.0.0.1:5000)
+
+```bash
+cd server
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
+.venv/bin/python seed.py   # (re)creates instance/trendify.db with the catalog in catalog.py
+.venv/bin/python app.py
+```
+
+Set `SECRET_KEY` in the environment for anything other than local development.
+Product photos live in `server/static/products/`; their sources (all CC0 / public
+domain) are listed in `server/static/image-sources.json`.
+
+**Frontend** (React + Vite, http://localhost:5173)
+
+```bash
+cd trendify-frontend
+npm install
+npm run dev
+```

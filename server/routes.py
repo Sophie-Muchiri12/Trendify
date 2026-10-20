@@ -155,16 +155,8 @@ def update_user_role(user_id):
 # Retrieve All Products
 @routes.route('/products', methods=['GET'])
 def get_products():
-    products = Product.query.all()
-    return jsonify([{
-        "product_id": p.product_id,
-        "name": p.name,
-        "description": p.description,
-        "price": float(p.price),
-        "stock_quantity": p.stock_quantity,
-        "category": p.category,
-        "image_url": p.image_url
-    } for p in products]), 200
+    products = Product.query.order_by(Product.product_id).all()
+    return jsonify([p.to_dict() for p in products]), 200
 
 # Retrieve Single Product
 @routes.route('/products/<int:product_id>', methods=['GET'])
@@ -172,15 +164,15 @@ def get_product(product_id):
     product = Product.query.get(product_id)
     if not product:
         return error_response("Product not found", 404)
-    return jsonify({
-        "product_id": product.product_id,
-        "name": product.name,
-        "description": product.description,
-        "price": float(product.price),
-        "stock_quantity": product.stock_quantity,
-        "category": product.category,
-        "image_url": product.image_url
-    }), 200
+    return jsonify(product.to_dict()), 200
+
+# Retrieve Single Product by slug (used by the storefront's /product/<slug> pages)
+@routes.route('/products/<string:slug>', methods=['GET'])
+def get_product_by_slug(slug):
+    product = Product.query.filter_by(slug=slug).first()
+    if not product:
+        return error_response("Product not found", 404)
+    return jsonify(product.to_dict()), 200
 
 # Add New Product (Admin Only)
 @routes.route('/products', methods=['POST'])
@@ -199,7 +191,12 @@ def add_product():
         price=data['price'],
         stock_quantity=data['stock_quantity'],
         category=data['category'],
-        image_url=data.get('image_url')
+        image_url=data.get('image_url'),
+        slug=data.get('slug'),
+        old_price=data.get('old_price'),
+        rating=data.get('rating'),
+        badge=data.get('badge'),
+        sizes=data.get('sizes'),
     )
     db.session.add(product)
     db.session.commit()
@@ -220,6 +217,9 @@ def update_product(product_id):
     product.stock_quantity = data.get('stock_quantity', product.stock_quantity)
     product.category = data.get('category', product.category)
     product.image_url = data.get('image_url', product.image_url)
+    for field in ('slug', 'old_price', 'rating', 'badge', 'sizes'):
+        if field in data:
+            setattr(product, field, data[field])
     db.session.commit()
     return jsonify({"message": "Product updated successfully"}), 200
 

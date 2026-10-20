@@ -1,7 +1,8 @@
 import os
 
 class Config:
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'your_secret_key'
+    # Signs sessions and JWTs. Set SECRET_KEY in the environment for anything but local dev.
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'dev-only-insecure-key'
     SQLALCHEMY_DATABASE_URI = 'sqlite:///trendify.db'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
