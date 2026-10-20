@@ -7,6 +7,7 @@ import {
   type ErrorComponentProps,
 } from "@tanstack/react-router";
 
+import { AuthProvider } from "@/lib/auth";
 import { CartProvider } from "@/lib/cart";
 import { SiteHeader, SiteFooter } from "@/components/SiteChrome";
 import { Toaster } from "@/components/ui/sonner";
@@ -84,14 +85,16 @@ export const Route = createRootRoute({
 
 function RootComponent() {
   return (
-    <CartProvider>
-      <HeadContent />
-      <SiteHeader />
-      <main>
-        <Outlet />
-      </main>
-      <SiteFooter />
-      <Toaster position="bottom-right" />
-    </CartProvider>
+    <AuthProvider>
+      <CartProvider>
+        <HeadContent />
+        <SiteHeader />
+        <main>
+          <Outlet />
+        </main>
+        <SiteFooter />
+        <Toaster position="bottom-right" />
+      </CartProvider>
+    </AuthProvider>
   );
 }

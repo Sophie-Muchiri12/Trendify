@@ -30,3 +30,10 @@ venv/
 
 # local database (recreate with migrations + seed.py)
 server/instance/
+
+# secrets and runtime data
+.env
+.env.*
+!.env.example
+# product images uploaded through the admin panel (runtime content, not source)
+server/static/products/u-*

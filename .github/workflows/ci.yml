@@ -1,0 +1,63 @@
+# Tests and dependency scanning on every push and pull request (OWASP A07).
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "0 6 * * 1" # weekly, to catch newly published vulnerabilities
+
+permissions:
+  contents: read
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: server
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install locked dependencies (hashes verified)
+        run: |
+          pip install --require-hashes -r requirements-dev.txt
+      - name: Tests
+        run: python -m pytest -q
+      - name: Scan Python dependencies
+        # The Pillow advisories below affect parsers (TIFF, GIF, EPS, PPM, PDF append) that
+        # Trendify never runs on uploads: admin/uploads only opens JPEG/PNG/WebP via
+        # Image.open(formats=...). Remove these once Pillow 13 is adopted. See SECURITY.md.
+        run: >
+          pip-audit -r requirements.txt --require-hashes --disable-pip
+          --ignore-vuln GHSA-p4wg-p73j-c528 --ignore-vuln GHSA-65qm-jvmh-6pqg
+          --ignore-vuln GHSA-58r4-6rv3-gfh8 --ignore-vuln GHSA-pchr-8j38-3x4p
+          --ignore-vuln GHSA-q45j-58j2-45rg --ignore-vuln GHSA-462x-pgg6-55fp
+          --ignore-vuln GHSA-c6hw-5grf-ff96 --ignore-vuln GHSA-vx6w-vv9f-6gvg
+
+  frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: trendify-frontend
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: trendify-frontend/package-lock.json
+      - name: Install exactly what package-lock.json records (integrity hashes verified)
+        run: npm ci --ignore-scripts
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build
+      - name: Scan npm dependencies
+        run: npm audit --audit-level=moderate

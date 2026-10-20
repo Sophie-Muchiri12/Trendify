@@ -1,0 +1,8 @@
+# Development and CI tools on top of the app's dependencies. Regenerate the locked
+# requirements-dev.txt (with hashes) after editing this file or requirements.txt:
+#   pip-compile --generate-hashes --strip-extras --allow-unsafe -o requirements-dev.txt requirements-dev.in
+-c requirements.txt
+-r requirements.in
+pip-audit==2.7.3
+pip-tools==7.4.1
+pytest==8.3.3

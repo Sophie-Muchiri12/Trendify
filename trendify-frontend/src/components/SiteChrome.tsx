@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import {
   Instagram,
   Facebook,
@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import { useAuth } from "@/lib/auth";
 import { useCart } from "@/lib/cart";
 
 const nav = [
@@ -29,6 +30,62 @@ function Logo() {
         Move · Live · Make
       </span>
     </Link>
+  );
+}
+
+function AccountMenu() {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
+  if (!user)
+    return (
+      <Link
+        to="/login"
+        className="hidden items-center gap-2 rounded-full border px-4 py-2 text-sm sm:flex"
+      >
+        <User className="h-4 w-4" /> Sign in
+      </Link>
+    );
+  return (
+    <div className="relative hidden sm:block">
+      <button
+        className="flex items-center gap-2 rounded-full border px-4 py-2 text-sm"
+        aria-expanded={open}
+        aria-haspopup="menu"
+        onClick={() => setOpen(!open)}
+      >
+        <User className="h-4 w-4" /> {user.name.split(" ")[0]}
+      </button>
+      {open && (
+        <div
+          role="menu"
+          className="absolute right-0 mt-2 w-48 overflow-hidden rounded-2xl border bg-card text-sm shadow-soft"
+          onClick={() => setOpen(false)}
+        >
+          <Link to="/account" className="block px-4 py-3 hover:bg-secondary">
+            Your account
+          </Link>
+          <Link to="/account/orders" className="block px-4 py-3 hover:bg-secondary">
+            Your orders
+          </Link>
+          {user.role === "admin" && (
+            <Link to="/admin" className="block px-4 py-3 hover:bg-secondary">
+              Admin
+            </Link>
+          )}
+          <button
+            className="block w-full px-4 py-3 text-left hover:bg-secondary"
+            onClick={async () => {
+              await logout();
+              toast.success("Signed out");
+              void navigate({ to: "/" });
+            }}
+          >
+            Sign out
+          </button>
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -52,12 +109,7 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="flex items-center gap-2">
-          <button
-            className="hidden items-center gap-2 rounded-full border px-4 py-2 text-sm sm:flex"
-            onClick={() => toast("Accounts coming soon")}
-          >
-            <User className="h-4 w-4" /> Sign in
-          </button>
+          <AccountMenu />
           <Link
             to="/cart"
             className="flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm text-primary-foreground"
@@ -79,6 +131,9 @@ export function SiteHeader() {
               {n.label}
             </Link>
           ))}
+          <Link to="/account" onClick={() => setOpen(false)}>
+            Account
+          </Link>
         </nav>
       )}
     </header>

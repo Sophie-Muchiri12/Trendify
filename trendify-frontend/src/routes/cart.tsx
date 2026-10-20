@@ -1,6 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { Minus, Plus, Trash2 } from "lucide-react";
-import { toast } from "sonner";
 import { useCart } from "@/lib/cart";
 import { fetchProducts, formatPrice } from "@/lib/products";
 
@@ -20,7 +19,8 @@ export const Route = createFileRoute("/cart")({
 });
 
 function CartPage() {
-  const { items, setQty, remove, clear } = useCart();
+  const { items, setQty, remove } = useCart();
+  const navigate = useNavigate();
   const products = Route.useLoaderData();
   const lines = items.flatMap((i) => {
     const p = products.find((x) => x.id === i.id);
@@ -108,14 +108,14 @@ function CartPage() {
             <span>{formatPrice(subtotal + shipping)}</span>
           </div>
           <button
-            onClick={() => {
-              clear();
-              toast.success("Order placed! (demo)");
-            }}
+            onClick={() => void navigate({ to: "/checkout" })}
             className="w-full rounded-full bg-terracotta py-3 font-semibold text-terracotta-foreground"
           >
             Checkout
           </button>
+          <p className="text-center text-xs text-muted-foreground">
+            Final prices are confirmed at checkout.
+          </p>
         </aside>
       </div>
     </div>

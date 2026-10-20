@@ -1,17 +1,24 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
-import { categories, fetchProducts, type Category } from "@/lib/products";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { categories, searchProducts, type Category, type ProductQuery } from "@/lib/products";
 import { ProductCard } from "@/components/ProductCard";
 
-type Search = { category?: Category | undefined; q?: string | undefined };
+const sorts = ["featured", "price_asc", "price_desc", "rating", "newest"] as const;
+type Sort = (typeof sorts)[number];
+
+type Search = { category?: Category | undefined; q?: string | undefined; sort?: Sort | undefined };
 
 export const Route = createFileRoute("/shop")({
   validateSearch: (s: Record<string, unknown>): Search => ({
     category: categories.includes(s["category"] as Category)
       ? (s["category"] as Category)
       : undefined,
-    q: typeof s["q"] === "string" && s["q"] ? s["q"] : undefined,
+    q: typeof s["q"] === "string" && s["q"] ? s["q"].slice(0, 100) : undefined,
+    sort: sorts.includes(s["sort"] as Sort) ? (s["sort"] as Sort) : undefined,
   }),
+  loaderDeps: ({ search }) => search,
+  // Searching, filtering and sorting happen on the server (validated, parameterized queries).
+  loader: ({ deps }) => searchProducts(deps as ProductQuery),
   head: () => ({
     meta: [
       { title: "Shop all — Trendify" },
@@ -25,24 +32,23 @@ export const Route = createFileRoute("/shop")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  loader: () => fetchProducts(),
   component: Shop,
 });
 
 function Shop() {
-  const { category, q } = Route.useSearch();
-  const products = Route.useLoaderData();
-  const [sort, setSort] = useState("featured");
+  const { category, q, sort } = Route.useSearch();
+  const list = Route.useLoaderData();
+  const navigate = useNavigate({ from: "/shop" });
   const [text, setText] = useState(q ?? "");
-  const list = useMemo(() => {
-    let l = products.filter(
-      (p) =>
-        (!category || p.category === category) && p.name.toLowerCase().includes(text.toLowerCase()),
-    );
-    if (sort === "low") l = [...l].sort((a, b) => a.price - b.price);
-    if (sort === "high") l = [...l].sort((a, b) => b.price - a.price);
-    return l;
-  }, [products, category, text, sort]);
+
+  // Update the URL (and so the server query) shortly after the user stops typing.
+  useEffect(() => {
+    const t = setTimeout(() => {
+      if ((q ?? "") !== text.trim())
+        void navigate({ search: (s) => ({ ...s, q: text.trim() || undefined }), replace: true });
+    }, 300);
+    return () => clearTimeout(t);
+  }, [text, q, navigate]);
 
   return (
     <div className="mx-auto max-w-7xl px-5 pt-10">
@@ -50,7 +56,7 @@ function Shop() {
       <div className="mt-6 flex flex-wrap items-center gap-2">
         <Link
           to="/shop"
-          search={{ q: undefined, category: undefined }}
+          search={(s) => ({ ...s, category: undefined })}
           className={`rounded-full border px-4 py-2 text-sm ${!category ? "bg-primary text-primary-foreground" : "bg-card"}`}
         >
           All
@@ -59,7 +65,7 @@ function Shop() {
           <Link
             key={c}
             to="/shop"
-            search={{ category: c, q: undefined }}
+            search={(s) => ({ ...s, category: c })}
             className={`rounded-full border px-4 py-2 text-sm ${category === c ? "bg-primary text-primary-foreground" : "bg-card"}`}
           >
             {c}
@@ -70,16 +76,23 @@ function Shop() {
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder="Search…"
+            maxLength={100}
+            aria-label="Search products"
             className="rounded-full border bg-card px-4 py-2 text-sm outline-none"
           />
           <select
-            value={sort}
-            onChange={(e) => setSort(e.target.value)}
+            value={sort ?? "featured"}
+            aria-label="Sort products"
+            onChange={(e) =>
+              void navigate({ search: (s) => ({ ...s, sort: e.target.value as Sort }) })
+            }
             className="rounded-full border bg-card px-4 py-2 text-sm"
           >
             <option value="featured">Featured</option>
-            <option value="low">Price: low to high</option>
-            <option value="high">Price: high to low</option>
+            <option value="price_asc">Price: low to high</option>
+            <option value="price_desc">Price: high to low</option>
+            <option value="rating">Top rated</option>
+            <option value="newest">Newest</option>
           </select>
         </div>
       </div>

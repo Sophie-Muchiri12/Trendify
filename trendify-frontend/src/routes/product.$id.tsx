@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { fetchProducts, formatPrice } from "@/lib/products";
 import { useCart } from "@/lib/cart";
 import { ProductCard } from "@/components/ProductCard";
+import { Reviews } from "@/components/Reviews";
 
 export const Route = createFileRoute("/product/$id")({
   loader: async ({ params }) => {
@@ -86,6 +87,9 @@ function ProductPage() {
             <span className="flex items-center gap-1 text-sm">
               <Star className="h-4 w-4 fill-ochre text-ochre" />
               {product.rating}
+              {product.reviewCount > 0 && (
+                <span className="text-muted-foreground">({product.reviewCount})</span>
+              )}
             </span>
           </div>
           <p className="text-muted-foreground">{product.description}</p>
@@ -115,18 +119,23 @@ function ProductPage() {
                 <Minus className="h-4 w-4" />
               </button>
               <span className="w-8 text-center">{qty}</span>
-              <button aria-label="Increase" className="p-3" onClick={() => setQty(qty + 1)}>
+              <button
+                aria-label="Increase"
+                className="p-3"
+                onClick={() => setQty(Math.min(qty + 1, 10, Math.max(product.stock, 1)))}
+              >
                 <Plus className="h-4 w-4" />
               </button>
             </div>
             <button
+              disabled={product.stock === 0}
               onClick={() => {
-                add(product.id, size, qty);
+                add(product.id, size, Math.min(qty, product.stock));
                 toast.success(`${product.name} added to cart`);
               }}
-              className="flex-1 rounded-full bg-terracotta px-8 py-3 font-semibold text-terracotta-foreground"
+              className="flex-1 rounded-full bg-terracotta px-8 py-3 font-semibold text-terracotta-foreground disabled:opacity-50"
             >
-              Add to cart
+              {product.stock === 0 ? "Sold out" : "Add to cart"}
             </button>
             <button
               aria-label="Wishlist"
@@ -148,6 +157,7 @@ function ProductPage() {
           </div>
         </div>
       </div>
+      <Reviews slug={product.id} />
       <h2 className="mb-6 mt-20 text-3xl">You may also like</h2>
       <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
         {related.map((p) => (
