@@ -16,7 +16,7 @@ Pillow==12.3.0
 PyJWT==2.15.1
 pyotp==2.9.0
 requests==2.34.2
-SQLAlchemy==2.0.36
+SQLAlchemy==2.1.5
 # Security fix for compromised eMudhra CA (PYSEC-2026-4320); newer than our usual
 # 14-day waiting period on purpose.
 certifi==2026.10.19
