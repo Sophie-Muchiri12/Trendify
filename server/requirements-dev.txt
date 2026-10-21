@@ -8,15 +8,15 @@ alembic==1.13.3 \
     --hash=sha256:203503117415561e203aa14541740643a611f641517f0209fcae63e9fa09f1a2 \
     --hash=sha256:908e905976d15235fae59c9ac42c4c5b75cfcefe3d27c0fbf7ae15a37715d80e
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
-    #   -r /home/sophie/Projects/Trendify/server/requirements.in
+    #   -c requirements.txt
+    #   -r requirements.in
     #   flask-migrate
 argon2-cffi==23.1.0 \
     --hash=sha256:879c3e79a2729ce768ebb7d36d4609e3a78a4ca2ec3a9f12286ca057e3d0db08 \
     --hash=sha256:c670642b78ba29641818ab2e68bd4e6a78ba53b7eff7b4c3815ae16abf91c7ea
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
-    #   -r /home/sophie/Projects/Trendify/server/requirements.in
+    #   -c requirements.txt
+    #   -r requirements.in
 argon2-cffi-bindings==26.1.0 \
     --hash=sha256:061a6919145bbf282ebf1f9c59d3135d4833c25313c8595c0d68cf7712ddfce2 \
     --hash=sha256:0cc40f7b4050bb93eb67de95d2d759322fc7ce4930b9d645581ecf4913ec651e \
@@ -60,13 +60,13 @@ argon2-cffi-bindings==26.1.0 \
     --hash=sha256:f9c4420a7a864fe1b86ce35befc95b8e39fb852493b81cf798671ddc265de638 \
     --hash=sha256:ffff613aaa9ce6236766e2fc6dc560bb5abde7a2e2416e3db1f9ae395a2b4dd4
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
+    #   -c requirements.txt
     #   argon2-cffi
 blinker==1.9.0 \
     --hash=sha256:b4ce2265a7abece45e7cc896e98dbebe6cead56bcf805a3d23136d145f5445bf \
     --hash=sha256:ba0efaa9080b619ff2f3459d1d500c57bddea4a6b424b60a91141db6fd2f08bc
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
+    #   -c requirements.txt
     #   flask
     #   flask-mail
 boolean-py==5.0 \
@@ -87,8 +87,8 @@ certifi==2026.10.19 \
     --hash=sha256:035c1e85572b141bf1c3a3eff0e33a8eb74917522f2559075ff8d2fea780a1ae \
     --hash=sha256:42d35340cc5b9ba78e818ddbff0c5b1c2b779de448a340fd1b989f5fa8670e1b
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
-    #   -r /home/sophie/Projects/Trendify/server/requirements.in
+    #   -c requirements.txt
+    #   -r requirements.in
     #   requests
 cffi==2.1.1 \
     --hash=sha256:046bfc24911b37851ee1b51aab8bffe713d89c68c6a057b09484ce9fd5f69b4e \
@@ -192,7 +192,7 @@ cffi==2.1.1 \
     --hash=sha256:fb92203a88b3d3053034db775110081c49d28be6551923805e039924093761e4 \
     --hash=sha256:fcd22650c908d7b7da162bbfaab594a1227a15d1643a98c68b122ac642fa2264
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
+    #   -c requirements.txt
     #   argon2-cffi-bindings
     #   cryptography
 charset-normalizer==3.5.2 \
@@ -369,13 +369,13 @@ charset-normalizer==3.5.2 \
     --hash=sha256:fd1fbe0f116b6e55da77aca2c6ddcddcfac2186cbf78bdebf40fc156efca389d \
     --hash=sha256:fe9753dfee015c570d73df76f899f18444d41388bffcde097deba51c4fadbb9f
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
+    #   -c requirements.txt
     #   requests
 click==8.5.0 \
     --hash=sha256:255bc9599cf7748b4b1a446ccc735421bd08a2ae529a8b88597d3de5664ee360 \
     --hash=sha256:ba0d2089de75ea0310e2dde03160e6ca10009947fb95a182f9b54021bb272e34
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
+    #   -c requirements.txt
     #   flask
     #   pip-tools
 cryptography==50.0.2 \
@@ -439,8 +439,8 @@ cryptography==50.0.2 \
     --hash=sha256:fa8f5efb344d6908a1ce62f4a24e2e5780f825d6f53f5f50ec5ffacac72936cb \
     --hash=sha256:fdd28f912fccfec1846a94e2e1e8f9b0012f557f0c46fe4f3eb0d7a87afcf90b
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
-    #   -r /home/sophie/Projects/Trendify/server/requirements.in
+    #   -c requirements.txt
+    #   -r requirements.in
 cyclonedx-python-lib==7.6.2 \
     --hash=sha256:31186c5725ac0cfcca433759a407b1424686cdc867b47cc86e6cf83691310903 \
     --hash=sha256:c42fab352cc0f7418d1b30def6751d9067ebcf0e8e4be210fc14d6e742a9edcc
@@ -453,20 +453,18 @@ deprecated==3.0.0 \
     --hash=sha256:16850204d3a1e6bb0acd06bff48d96e8b0a0d25d1c52f71705405a0f4894192d \
     --hash=sha256:58204cf4a7f6270d547af5c278ee7a6bb56045a4b3d8441a1cd11660f41b7939
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
+    #   -c requirements.txt
     #   limits
 filelock==4.0.12 \
     --hash=sha256:5f17ee83ecee8a6f3e389c75822fb70a1c2f0506b99438a6dffa1d56793588c8 \
     --hash=sha256:cf42711a7ac791818b299fab0332a088c65aeeefa36290de98db92c434303b0c
-    # via
-    #   -c /tmp/claude-1000/-home-sophie-Projects-Trendify/77d19da3-c15c-404a-9318-4e3c476d029b/scratchpad/constraints.txt
-    #   cachecontrol
+    # via cachecontrol
 flask==3.1.3 \
     --hash=sha256:0ef0e52b8a9cd932855379197dd8f94047b359ca0a78695144304cb45f87c9eb \
     --hash=sha256:f4bcbefc124291925f1a26446da31a5178f9483862233b23c0c96a20701f670c
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
-    #   -r /home/sophie/Projects/Trendify/server/requirements.in
+    #   -c requirements.txt
+    #   -r requirements.in
     #   flask-cors
     #   flask-jwt-extended
     #   flask-limiter
@@ -477,38 +475,38 @@ flask-cors==6.0.5 \
     --hash=sha256:30c5031552cd59f620ac0c8211dac45b345d3b2df310e7721879e4f46ef9c601 \
     --hash=sha256:68fcf75693e961f3af26683b23c4b9a8fb6b64de17d20d0c37b95e8de7ab2ed8
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
-    #   -r /home/sophie/Projects/Trendify/server/requirements.in
+    #   -c requirements.txt
+    #   -r requirements.in
 flask-jwt-extended==4.7.4 \
     --hash=sha256:78fd0f460317facf3a0084a6457ffaf2f1dda9eefbd576f94cea35b0eadd5531 \
     --hash=sha256:daad1981117f4972d63c363d013f290de307aad781a935921b603b714817393c
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
-    #   -r /home/sophie/Projects/Trendify/server/requirements.in
+    #   -c requirements.txt
+    #   -r requirements.in
 flask-limiter==3.8.0 \
     --hash=sha256:0ab44f586d8cc349412791711b6cbafe8f86e7b60ad9e8f24f2686009f00900e \
     --hash=sha256:686f8b4a75404e47b91565a795c70d29f69c145f6907f1f32522e962b134dada
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
-    #   -r /home/sophie/Projects/Trendify/server/requirements.in
+    #   -c requirements.txt
+    #   -r requirements.in
 flask-mail==0.10.0 \
     --hash=sha256:44083e7b02bbcce792209c06252f8569dd5a325a7aaa76afe7330422bd97881d \
     --hash=sha256:a451e490931bb3441d9b11ebab6812a16bfa81855792ae1bf9c1e1e22c4e51e7
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
-    #   -r /home/sophie/Projects/Trendify/server/requirements.in
+    #   -c requirements.txt
+    #   -r requirements.in
 flask-migrate==4.0.7 \
     --hash=sha256:5c532be17e7b43a223b7500d620edae33795df27c75811ddf32560f7d48ec617 \
     --hash=sha256:dff7dd25113c210b069af280ea713b883f3840c1e3455274745d7355778c8622
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
-    #   -r /home/sophie/Projects/Trendify/server/requirements.in
+    #   -c requirements.txt
+    #   -r requirements.in
 flask-sqlalchemy==3.1.1 \
     --hash=sha256:4ba4be7f419dc72f4efd8802d69974803c37259dd42f3913b0dcf75c9447e0a0 \
     --hash=sha256:e4b68bb881802dda1a7d878b2fc84c06d1ee57fb40b874d3dc97dabfa36b8312
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
-    #   -r /home/sophie/Projects/Trendify/server/requirements.in
+    #   -c requirements.txt
+    #   -r requirements.in
     #   flask-migrate
 html5lib==1.1 \
     --hash=sha256:0d78f8fde1c230e99fe37986a60526d7049ed4bf8a9fadbad5f00e22e58e041d \
@@ -518,7 +516,7 @@ idna==3.20 \
     --hash=sha256:a7db850025b95ded1eae8a46181a1a6c56c92c96f0e2b005d9ff8dc0210cab44 \
     --hash=sha256:ab7ae7122974553370f0bdb919e1a960b2cd1bc1ef0276416d896db81c14582c
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
+    #   -c requirements.txt
     #   requests
 iniconfig==2.3.1 \
     --hash=sha256:67f4b9c50da0dedf52af349e7749a80a9057a5031199791b906c3bb3ae878960 \
@@ -528,13 +526,13 @@ itsdangerous==2.2.0 \
     --hash=sha256:c6242fc49e35958c8b15141343aa660db5fc54d4f13a1db01a3f5891b98700ef \
     --hash=sha256:e0050c0b7da1eea53ffaf149c0cfbb5c6e2e2b69c4bef22c81fa6eb73e5f6173
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
+    #   -c requirements.txt
     #   flask
 jinja2==3.1.6 \
     --hash=sha256:0137fb05990d35f1275a587e9aee6d56da821fc83491a0fb838183be43f66d6d \
     --hash=sha256:85ece4451f492d0c13c5dd7c13a64681a86afae63a5f347908daf103ce6d2f67
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
+    #   -c requirements.txt
     #   flask
 license-expression==30.4.4 \
     --hash=sha256:421788fdcadb41f049d2dc934ce666626265aeccefddd25e162a26f23bcbf8a4 \
@@ -544,19 +542,19 @@ limits==5.8.0 \
     --hash=sha256:ae1b008a43eb43073c3c579398bd4eb4c795de60952532dc24720ab45e1ac6b8 \
     --hash=sha256:c9e0d74aed837e8f6f50d1fcebcf5fd8130957287206bc3799adaee5092655da
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
+    #   -c requirements.txt
     #   flask-limiter
 mako==1.4.3 \
     --hash=sha256:723296007c870bfd6b3f0c3230dba7198096e5269297ebf5e4eff9e7ffa39d4f \
     --hash=sha256:cd6537fe88d5fec315c55c2f8529bc4ce7a9a352ad7db3eeaa6a66e2dd4ec37a
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
+    #   -c requirements.txt
     #   alembic
 markdown-it-py==4.2.0 \
     --hash=sha256:04a21681d6fbb623de53f6f364d352309d4094dd4194040a10fd51833e418d49 \
     --hash=sha256:9f7ebbcd14fe59494226453aed97c1070d83f8d24b6fc3a3bcf9a38092641c4a
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
+    #   -c requirements.txt
     #   rich
 markupsafe==3.0.4 \
     --hash=sha256:007e1ffd9bf65bb6ee96df7b258fc632a4868dd5566037986c64781f35a36e98 \
@@ -711,7 +709,7 @@ markupsafe==3.0.4 \
     --hash=sha256:fd9f8797427910198f95bced71ddfed61130d7e349213bfb8466c9c99e2c46a8 \
     --hash=sha256:fdb4ca07ab75ffadab4a8b135ad59cdbb3156b99310f3d565370da74a15d6bd3
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
+    #   -c requirements.txt
     #   flask
     #   jinja2
     #   mako
@@ -720,13 +718,13 @@ marshmallow==4.3.1 \
     --hash=sha256:e65accfbe277546df92ed7996a678c90e063e9a7c2a2f5e03f7d0b90e3768c42 \
     --hash=sha256:fb6b8048af08d4ab061610d5b7d3696a7e4c95337dbda880edb9f95812cabc20
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
-    #   -r /home/sophie/Projects/Trendify/server/requirements.in
+    #   -c requirements.txt
+    #   -r requirements.in
 mdurl==0.1.2 \
     --hash=sha256:84008a41e51615a49fc9966191ff91509e3c40b939176e643fd50a5c2196b8f8 \
     --hash=sha256:bb413d29f5eea38f31dd4754dd7377d4465116fb207585f97bf925588687c1ba
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
+    #   -c requirements.txt
     #   markdown-it-py
 msgpack==1.2.3 \
     --hash=sha256:07c9733089d1b176c3dd2f7fa268452f9d5d784d076473499d754a58e8d1fbbb \
@@ -825,7 +823,7 @@ ordered-set==4.1.0 \
     --hash=sha256:046e1132c71fcf3330438a539928932caf51ddbc582496833e23de611de14562 \
     --hash=sha256:694a8e44c87657c59292ede72891eb91d34131f6531463aab3009191c77364a8
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
+    #   -c requirements.txt
     #   flask-limiter
 packageurl-python==0.17.6 \
     --hash=sha256:1252ce3a102372ca6f86eb968e16f9014c4ba511c5c37d95a7f023e2ca6e5c25 \
@@ -835,7 +833,7 @@ packaging==26.3 \
     --hash=sha256:94edc256424af38762eb31306eed28beb9f0efc50a8837492c9d6fd6004aed79 \
     --hash=sha256:d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
+    #   -c requirements.txt
     #   build
     #   limits
     #   pip-audit
@@ -931,8 +929,8 @@ pillow==12.3.0 \
     --hash=sha256:fe3cca2e4e8a592be0f269a1ca4835c25199d9f3ce815c8491048f785b0a0198 \
     --hash=sha256:ffd0c5368496f41b0944be820fcb7a838aa6e623d250b01acf2643939c3f99d7
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
-    #   -r /home/sophie/Projects/Trendify/server/requirements.in
+    #   -c requirements.txt
+    #   -r requirements.in
 pip-api==0.0.35 \
     --hash=sha256:14dea05d7b3b68f4c7582213e3ae8932bbba8e1f754bf06b95263d5fa6ab4363 \
     --hash=sha256:66990d0da25378555cbb538db79384bab92d4617c6350dfd7a2126ba2a3a9894
@@ -952,9 +950,7 @@ pip-tools==7.4.1 \
 pluggy==1.6.0 \
     --hash=sha256:7dcc130b76258d33b90f61b658791dede3486c3e6bfb003ee5c9bfb396dd22f3 \
     --hash=sha256:e920276dd6813095e9377c0bc5566d94c932c33b27a3e3945d8389c374dd4746
-    # via
-    #   -c /tmp/claude-1000/-home-sophie-Projects-Trendify/77d19da3-c15c-404a-9318-4e3c476d029b/scratchpad/constraints.txt
-    #   pytest
+    # via pytest
 py-serializable==1.1.2 \
     --hash=sha256:801be61b0a1ba64c3861f7c624f1de5cfbbabf8b458acc9cdda91e8f7e5effa1 \
     --hash=sha256:89af30bc319047d4aa0d8708af412f6ce73835e18bacf1a080028bb9e2f42bdb
@@ -963,28 +959,28 @@ pycparser==3.0 \
     --hash=sha256:600f49d217304a5902ac3c37e1281c9fe94e4d0489de643a9504c5cdfdfc6b29 \
     --hash=sha256:b727414169a36b7d524c1c3e31839a521725078d7b2ff038656844266160a992
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
-    #   -c /tmp/claude-1000/-home-sophie-Projects-Trendify/77d19da3-c15c-404a-9318-4e3c476d029b/scratchpad/constraints.txt
+    #   -c requirements.txt
     #   cffi
 pygments==2.21.0 \
     --hash=sha256:2363c69b61c4a97c838da3b130dcd6468f4848992b21a82f2a63ec34377137d9 \
     --hash=sha256:610ca751c9bc2492b38eb9a38a7fbc93edbbb2d7182edaf34e66ae493dee5c8c
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
+    #   -c requirements.txt
+    #   pytest
     #   rich
 pyjwt==2.15.1 \
     --hash=sha256:42d59d631f7768a1028a64c7ff581a9bf7519804daf91fc5b6c56e30eec5e193 \
     --hash=sha256:4f259e80cdfb6b3fc18a7de51fd1ef9ec79652f25019bae68975ca2468a34df8
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
-    #   -r /home/sophie/Projects/Trendify/server/requirements.in
+    #   -c requirements.txt
+    #   -r requirements.in
     #   flask-jwt-extended
 pyotp==2.9.0 \
     --hash=sha256:346b6642e0dbdde3b4ff5a930b664ca82abfa116356ed48cc42c7d6590d36f63 \
     --hash=sha256:81c2e5865b8ac55e825b0358e496e1d9387c811e85bb40e71a3b29b288963612
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
-    #   -r /home/sophie/Projects/Trendify/server/requirements.in
+    #   -c requirements.txt
+    #   -r requirements.in
 pyparsing==3.3.3 \
     --hash=sha256:928ae7e20211f3b6f3915a72f06a0cfd29ab9d24279dd6346b6b1a7146397d36 \
     --hash=sha256:ece8c00a69cf01b45d0b1dedabb469c90d8caf996d4fda40f147627a122849a4
@@ -995,23 +991,23 @@ pyproject-hooks==1.3.3 \
     # via
     #   build
     #   pip-tools
-pytest==8.3.3 \
-    --hash=sha256:70b98107bd648308a7952b06e6ca9a50bc660be218d53c257cc1fc94fda10181 \
-    --hash=sha256:a6853c7375b2663155079443d2e45de913a911a11d669df02a50814944db57b2
+pytest==9.1.1 \
+    --hash=sha256:1088fbde8f2b49d95a549a195707afa7a76a3ce9bcadc26b6d71f0ffda5fe313 \
+    --hash=sha256:37a86b45efb9a47a61a36449063e8e18d0cab3161329fc099eb21783169c4f0c
     # via -r requirements-dev.in
 requests==2.34.2 \
     --hash=sha256:2a0d60c172f83ac6ab31e4554906c0f3b3588d37b5cb939b1c061f4907e278e0 \
     --hash=sha256:f288924cae4e29463698d6d60bc6a4da69c89185ad1e0bcc4104f584e960b9ed
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
-    #   -r /home/sophie/Projects/Trendify/server/requirements.in
+    #   -c requirements.txt
+    #   -r requirements.in
     #   cachecontrol
     #   pip-audit
 rich==13.9.4 \
     --hash=sha256:439594978a49a09530cff7ebc4b5c7103ef57baf48d5ea3184f21d9a2befa098 \
     --hash=sha256:6049d5e6ec054bf2779ab3358186963bac2ea89175919d699e378b99738c2a90
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
+    #   -c requirements.txt
     #   flask-limiter
     #   pip-audit
 six==1.17.0 \
@@ -1081,8 +1077,8 @@ sqlalchemy==2.0.36 \
     --hash=sha256:fddbe92b4760c6f5d48162aef14824add991aeda8ddadb3c31d56eb15ca69f8e \
     --hash=sha256:fdf3386a801ea5aba17c6410dd1dc8d39cf454ca2565541b5ac42a84e1e28f53
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
-    #   -r /home/sophie/Projects/Trendify/server/requirements.in
+    #   -c requirements.txt
+    #   -r requirements.in
     #   alembic
     #   flask-sqlalchemy
 toml==0.10.2 \
@@ -1093,7 +1089,7 @@ typing-extensions==4.16.0 \
     --hash=sha256:481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8 \
     --hash=sha256:dc983d19a509c94dba722ee6abd33940f7c05a89e243c47e907eb4db6f1a43e5
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
+    #   -c requirements.txt
     #   alembic
     #   flask-limiter
     #   limits
@@ -1102,7 +1098,7 @@ urllib3==2.8.0 \
     --hash=sha256:0cf3cae568d36aa9576b28dfb35f11328f1cb974ca7647d9475ebb86c75ac6e3 \
     --hash=sha256:63bf2ead4c879426ebf22ef2a781eeb4aa3b4ae798a0435506f8687fd5bb9b63
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
+    #   -c requirements.txt
     #   requests
 webencodings==0.6.1 \
     --hash=sha256:565f9ad031c702dae404e27a099e3e09186a3ab1b9520f06d215502b651fd910 \
@@ -1112,8 +1108,8 @@ werkzeug==3.1.9 \
     --hash=sha256:55ca7c70a75689be937aa27f8ff4b018f06ff4838fc73045560bf0f5a1291060 \
     --hash=sha256:6392e50c78460ba618e5b21f08a71f59c99ce99cdc6cf6e3dd7e6ccca8754fab
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
-    #   -r /home/sophie/Projects/Trendify/server/requirements.in
+    #   -c requirements.txt
+    #   -r requirements.in
     #   flask
     #   flask-cors
     #   flask-jwt-extended
@@ -1224,8 +1220,7 @@ wrapt==2.5.0 \
     --hash=sha256:fe09aac4837ec720af606a493e814dcc3f65631984e1b7231b589efcf9917024 \
     --hash=sha256:ff909b934b1958e31784d412abab5cbb0709fdbc01c86f22965e1d15331371ba
     # via
-    #   -c /home/sophie/Projects/Trendify/server/requirements.txt
-    #   -c /tmp/claude-1000/-home-sophie-Projects-Trendify/77d19da3-c15c-404a-9318-4e3c476d029b/scratchpad/constraints.txt
+    #   -c requirements.txt
     #   deprecated
 
 # The following packages are considered to be unsafe in a requirements file:
@@ -1233,12 +1228,9 @@ pip==26.2.1 \
     --hash=sha256:71138adf1f4ca900cdb7d289c21b7494329f2332b6d85f0e1c42108c0384ed3e \
     --hash=sha256:f6ad667e89a1fe78046c8f13232b247200f5258d7828f3f7883d660878e0813f
     # via
-    #   -c /tmp/claude-1000/-home-sophie-Projects-Trendify/77d19da3-c15c-404a-9318-4e3c476d029b/scratchpad/constraints.txt
     #   pip-api
     #   pip-tools
 setuptools==84.0.0 \
     --hash=sha256:51a52592b3b99e102b609654876bd65f19f999935166d1352678931132b0c670 \
     --hash=sha256:f4695c21257f0d9b537ec2692c941d02ee143b7cc1276941349a546573b2ef73
-    # via
-    #   -c /tmp/claude-1000/-home-sophie-Projects-Trendify/77d19da3-c15c-404a-9318-4e3c476d029b/scratchpad/constraints.txt
-    #   pip-tools
+    # via pip-tools
