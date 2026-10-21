@@ -1,23 +1,5 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
-
-export interface CartItem {
-  id: string;
-  size?: string | undefined;
-  qty: number;
-}
-
-interface Ctx {
-  items: CartItem[];
-  wishlist: string[];
-  add: (id: string, size?: string, qty?: number) => void;
-  setQty: (id: string, size: string | undefined, qty: number) => void;
-  remove: (id: string, size?: string) => void;
-  clear: () => void;
-  toggleWish: (id: string) => void;
-  count: number;
-}
-
-const CartContext = createContext<Ctx | null>(null);
+import { useEffect, useState, type ReactNode } from "react";
+import { CartContext, type CartCtx, type CartItem } from "@/lib/cart";
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
@@ -42,7 +24,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   const same = (a: CartItem, id: string, size?: string) => a.id === id && a.size === size;
 
-  const value: Ctx = {
+  const value: CartCtx = {
     items,
     wishlist,
     count: items.reduce((s, i) => s + i.qty, 0),
@@ -62,10 +44,4 @@ export function CartProvider({ children }: { children: ReactNode }) {
       setWishlist((w) => (w.includes(id) ? w.filter((x) => x !== id) : [...w, id])),
   };
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
-}
-
-export function useCart() {
-  const c = useContext(CartContext);
-  if (!c) throw new Error("useCart must be inside CartProvider");
-  return c;
 }

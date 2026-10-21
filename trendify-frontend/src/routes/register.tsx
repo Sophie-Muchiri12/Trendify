@@ -1,14 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import {
-  Button,
-  Card,
-  Field,
-  FormError,
-  Page,
-  PASSWORD_HINT,
-  fieldError,
-} from "@/components/Forms";
+import { Button, Card, Field, FormError, Page } from "@/components/Forms";
+import { PASSWORD_HINT, fieldError } from "@/lib/forms";
 import { api } from "@/lib/api";
 
 export const Route = createFileRoute("/register")({

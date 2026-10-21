@@ -1,28 +1,6 @@
-import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useState, type ReactNode } from "react";
 import { api, hasRefreshCookie, refreshSession } from "@/lib/api";
-
-export interface User {
-  user_id: number;
-  name: string;
-  email: string;
-  phone_number: string;
-  role: "customer" | "admin";
-  email_verified: boolean;
-  mfa_enabled: boolean;
-  created_at: string | null;
-}
-
-interface AuthCtx {
-  user: User | null;
-  loading: boolean;
-  /** Re-read the signed-in user from the server. */
-  reload: () => Promise<User | null>;
-  setUser: (u: User | null) => void;
-  login: (email: string, password: string, otp?: string) => Promise<User>;
-  logout: () => Promise<void>;
-}
-
-const AuthContext = createContext<AuthCtx | null>(null);
+import { AuthContext, type User } from "@/lib/auth";
 
 async function fetchMe(): Promise<User | null> {
   let { user } = await api<{ user: User | null }>("/auth/me");
@@ -76,10 +54,4 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       {children}
     </AuthContext.Provider>
   );
-}
-
-export function useAuth() {
-  const ctx = useContext(AuthContext);
-  if (!ctx) throw new Error("useAuth must be inside AuthProvider");
-  return ctx;
 }

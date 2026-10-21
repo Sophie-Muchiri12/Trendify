@@ -1,7 +1,8 @@
 import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
 import { useState } from "react";
 import { toast } from "sonner";
-import { Button, Card, Field, FormError, Page, fieldError } from "@/components/Forms";
+import { Button, Card, Field, FormError, Page } from "@/components/Forms";
+import { fieldError } from "@/lib/forms";
 import { ApiError, safeRedirect } from "@/lib/api";
 import { useAuth } from "@/lib/auth";
 

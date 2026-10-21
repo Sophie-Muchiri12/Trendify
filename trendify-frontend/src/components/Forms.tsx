@@ -1,6 +1,5 @@
 import { Link, Navigate, useLocation } from "@tanstack/react-router";
 import type { InputHTMLAttributes, ReactNode, TextareaHTMLAttributes } from "react";
-import { ApiError } from "@/lib/api";
 import { useAuth } from "@/lib/auth";
 import { statusLabel, type OrderStatus } from "@/lib/orders";
 
@@ -83,9 +82,6 @@ export function FormError({ error }: { error: unknown }) {
   );
 }
 
-export const fieldError = (error: unknown, name: string) =>
-  error instanceof ApiError ? error.field(name) : undefined;
-
 export function Page({
   title,
   children,
@@ -145,7 +141,3 @@ export function StatusBadge({ status }: { status: OrderStatus }) {
     </span>
   );
 }
-
-/** Password rules shown to the user; the server enforces the same policy. */
-export const PASSWORD_HINT =
-  "At least 10 characters, with upper- and lower-case letters and a number.";

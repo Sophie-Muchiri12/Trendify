@@ -7,8 +7,8 @@ import {
   type ErrorComponentProps,
 } from "@tanstack/react-router";
 
-import { AuthProvider } from "@/lib/auth";
-import { CartProvider } from "@/lib/cart";
+import { AuthProvider } from "@/components/AuthProvider";
+import { CartProvider } from "@/components/CartProvider";
 import { SiteHeader, SiteFooter } from "@/components/SiteChrome";
 import { Toaster } from "@/components/ui/sonner";
 
